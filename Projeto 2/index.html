@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,11 +7,53 @@
     <link rel="stylesheet" href="./styles.css">
     <title>LogGator- Sua Loja Online</title>
 </head>
-<body>
-    <h1>LogGator- Sua Loja Online</h1>
-<form action="" class="container" id="form" data-new-list-form>
-    <input data-new-list-input type="text" id="input"/>
-    <button id="add">Save</button>
+<body onload="carregarTotalEstoque('totalEstoque');">
+    <!-- Carrinho de Compras-->
+   <div class= "carrinho">
+       <img src="img/—Pngtree—shopping cart icon_3582761.png">
+       <p> Itens no estoque: <span id:"totalEstoque">0</span></p>
+   </div>
+   
+    <!--Formulário: Nome, código e quantidade de produtos-->
+<form> 
+    <table>
+        <caption> Cadastro de Novos Produtos</caption>
+        <!--Nome do produto-->
+        <tr> 
+            <td class="alinharRotulos">Nome do Produto:</td>
+            <td><input id="txtNomeProduto" type="text"></td>
+        </tr>
+        <!--Código do Produto-->
+        <tr> 
+            <td class="alinharRotulos">Código do Produto:</td>
+            <td><input id="txtCodProduto" type="text"></td>
+        <!--Quantidade de Produto-->
+        <tr>
+            <td class="alinharRotulos">Quantidade do Produto:</td>
+            <td>
+                <select id="qtidadedeProduto">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </td>
+        </tr>
+        <!--Botões-->
+        <tr>
+            <td colspan="2" align="center">
+                <input type="button" value="Cadastrar" class="alinhaBtns" onclick="validarProduto('txtNomeProduto', 'txtCodProduto', 'qtidadedeProduto');">
+                <input type="button" value="Ver Estoque" class="alinhaBtns" onclick="window.open('verEstoque.html', '_self')">
+            </td>
+        </tr>
+    </table>
+        
 </form>
 <script src="./script.js"></script>
     
