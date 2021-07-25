@@ -4,58 +4,64 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles.css">
-    <title>LogGator- Sua Loja Online</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+
+    <script src="script.js"></script>
+
+    <title>Desafio 2</title>
 </head>
-<body onload="carregarTotalEstoque('totalEstoque');">
-    <!-- Carrinho de Compras-->
-   <div class= "carrinho">
-       <img src="img/—Pngtree—shopping cart icon_3582761.png">
-       <p> Itens no estoque: <span id:"totalEstoque">0</span></p>
-   </div>
+<body>
+
+    <header>
+        <h1>Minha Loja</h1>
+    </header>
+       
+    <main>
+
+         <div class="title"> 
+           <h2>Produtos</h2>
+           <span>Lista de produtos da minha Loja</span>
+         
+         </div>
+
+         <div class="card">
+             <div class="lineInput">
+                 <label>Produto</label>
+                 <input type="text"  id="produto" placeholder = "Nome do produto">
+             </div>
+
+             <div class="lineInput">
+                <label>Preço</label>
+                <input type="text"  id="preço" placeholder="Valor de produto">
+            </div>
+          
+         <button onclick="produto.salvar()">Salvar</button>
+         <button onclick="produto.cancelar()">Cancelar</button>
+
+        </div>
+
+        <div class="content">
+            <table border="1">
+                <thead>
+                    <th class="center">ID</th>
+                    <th>Produto</th>
+                    <th>Valor</th>
+                    <th class="center">Ações</th>
+                </thead>
+                <tbody id="tbody">
+                    
+                </tbody>
+            </table>
+
+        </div>
+
+    </main>
+
    
-    <!--Formulário: Nome, código e quantidade de produtos-->
-<form> 
-    <table>
-        <caption> Cadastro de Novos Produtos</caption>
-        <!--Nome do produto-->
-        <tr> 
-            <td class="alinharRotulos">Nome do Produto:</td>
-            <td><input id="txtNomeProduto" type="text"></td>
-        </tr>
-        <!--Código do Produto-->
-        <tr> 
-            <td class="alinharRotulos">Código do Produto:</td>
-            <td><input id="txtCodProduto" type="text"></td>
-        <!--Quantidade de Produto-->
-        <tr>
-            <td class="alinharRotulos">Quantidade do Produto:</td>
-            <td>
-                <select id="qtidadedeProduto">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                </select>
-            </td>
-        </tr>
-        <!--Botões-->
-        <tr>
-            <td colspan="2" align="center">
-                <input type="button" value="Cadastrar" class="alinhaBtns" onclick="validarProduto('txtNomeProduto', 'txtCodProduto', 'qtidadedeProduto');">
-                <input type="button" value="Ver Estoque" class="alinhaBtns" onclick="window.open('verEstoque.html', '_self')">
-            </td>
-        </tr>
-    </table>
-        
-</form>
-<script src="./script.js"></script>
-    
 </body>
 </html>

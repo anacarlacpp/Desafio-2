@@ -1,68 +1,120 @@
-function validarProduto(idNomeProduto, idCodProduto,idQtidadedeProduto){
+class Produto {
 
-let nome= document.getElementById(idNomeProduto).value;
-let codigo= document.getElementById(idCodProduto).value;
-let qtidade= document.getElementById(idQtidaded).value;
-
-if (nome=="") 
-    alert("Nome do Produto não pode estar em branco. Por favor, preenchê-lo!");
-   
-else if (codigo=="") 
-    alert("Código do produto não pode estar em branco. Por favor, preenchê-lo!");
-    
-else cadastrarProduto(nome,codigo,parseInt(qtidade));
-}
-
-function cadastrarProduto(produto,codigo,qtidade) {
-    let novoProduto ={nome:produto,codigo:codigo,qtidade:qtidade};
-
-    if (typeof(Storage) !== "undefined") {
-        let produtos = localStorage.getItem("produtos");
-        if (produtos== null) produtos =[];
-        else produtos = JSON.parse(produtos);
-        produtos.push(novoProduto);
-        localStorage.setItem("produtos",JSON.stringify(produtos))
-        alert("Foram cadastados com sucesso" +qntidade+"unidades do produto"+produto+"!");
-        atualizarTotalEstoque("totalEstoque");
-        location.reload();
+    constructor(){
+        this.id = 1;
+        this.arrayProdutos= [];
+      
 
     }
 
-    else alert("A versão do seu navegador é muito antiga. Por isso, não será possível executar a aplicação");
-}
+    salvar()  {
+        let produto = this.lerDados();
 
-function carregarTotalEstoque(idCampo) {
-    localStorage.setItem("totalEstoque", ++document.getElementById(idCampo).innerHTML)
-    
-}
+       if(this.validaCampos(produto)){
+           this.adicionar(produto);
+       }
 
-function carregarTotalEstoque(idCampo) {
-    if (typeof(Storage) !== "undefined") {
-        let totalEstoque = localStorage.getItem("totalEstoque");
-        if (totalEstoque == null) totalEstoque = 0;
-        document.getElement(idCampo).innerHTML = totalEstoque;
-
+      this.listaTabela();
+      this.cancelar();
+       
     }
-    else alert("A versão do seu navegador é muito antiga. Por isso, não será possível executar a aplicação");
-}
 
-function listarEstoque() {
-    if(typeof(Storage) !== "undefined") {
-        let produtos = localStorage.getItem("produtos");
-        document.write("<h1>Estoque:</h1>");
-        if(produtos == null)
-        document.write("<h3> Ainda não há nenhum item no estoque</h3>");
-        else{
-            produtos= JSON.parse(produtos);
-            produtos.forEach(produto => {
-                document.write("<ul>");
-                document.write("<li>Nome do produto:" +produto.nome+"</li>");
-                document.write("<li>Código do produto:" +produto.nome+"</li>");
-                document.write("<li>Quantidade no estoque:" +produto.quantidade+"</li>");
-                document.write("</ul>");
+    listaTabela() {
+        let tbody = document.getElementById('tbody');
+        tbody.innerText = '';
 
-            })
+        for(let i=0; i < this.arrayProdutos.length; i++) {
+            let tr= tbody.insertRow();
+
+            let td_id = tr.insertCell();
+            let td_produto = tr.insertCell();
+            let td_valor = tr.insertCell();
+            let td_ações = tr.insertCell();
+
+            td_id.innerText = this.arrayProdutos[i].id;
+            td_produto.innerText = this.arrayProdutos[i].nomeProduto;
+            td_valor.innerText = this.arrayProdutos[i].preço;
+
+            td_id.classList.add('center');
+
+            let imgEdit = document.createElement('img');
+            imgEdit.src = 'img/editar-imagem.png';
+
+            let imgDelete = document.createElement('img');
+            imgDelete.src = 'img/deletar-usuario.png';
+            imgDelete.setAttribute("onclick", "produto.deletar("+ this.arrayProdutos[i].id +")");
+
+            td_ações.appendChild(imgEdit);
+            td_ações.appendChild(imgDelete);
+
+            console.log(this.arrayProdutos);
+            
+
+
+
         }
     }
-    else alert("A versão do seu navegador é muito antiga. Por isso, não será possível executar a aplicação");
+
+
+    adicionar(produto){
+        this.arrayProdutos.push(produto);
+        this.id++;
+
+    }
+
+    lerDados() {
+        let produto = {}
+
+      produto.id = this.id;  
+      produto.nomeProduto =  document.getElementById('produto').value;
+      produto.preço =  document.getElementById('preço').value;
+
+        return produto;
+    }
+
+    validaCampos(produto){
+        let msg = '';
+
+        if(produto.nomeProduto == '') {
+            msg += '- Informe o Nome do Produto /n';
+            
+        }
+
+        if(produto.preço == '') {
+            msg += '- Informe o Preço do Produto /n';
+            
+        }
+
+        if(msg != '') {
+            alert(msg);
+            return false;
+        }
+
+        return true;
+
+    }
+
+    cancelar() {
+        document.getElementById('produto').value = '';
+        document.getElementById('preço').value = '';
+       
+        
+    }
+
+    deletar(id) {
+
+        let tbody = document.getElementById('tbody');
+
+        for(let i = 0; i <this.arrayProdutos.length; i++) {
+            if(this.arrayProdutos[i].id == id) {
+                this.arrayProdutos.splice(i,1);
+                tbody.deleteRow(i);
+            }
+        }
+
+        console.log(this.arrayProdutos);
+    }
+
 }
+
+var produto = new Produto()
