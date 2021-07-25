@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/Projeto 2/css/styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+
+    <script src="/Projeto 2/js/script2.js"></script>
+
+    <title>Desafio 2</title>
+</head>
+<body>
+
+    <header>
+         <nav>
+            <a class="logo" href="/">Minha Loja - LogHunters</a>
+            
+        <ul class="nav-list">
+            <li><a href="/Projeto 2/html/home.html">Início</a></li>
+            <li><a href="/Projeto 2/html/index2.html">Lista de Clientes</a></li>
+            <li><a href="/Projeto 2/html/index.html">Lista de Produtos</a></li>
+          </ul>
+        </nav>
+        
+    </header>
+       
+    <main>
+
+         <div class="title"> 
+           <h2>Clientes</h2>
+           <span>Lista de clientes da minha Loja</span>
+         
+         </div>
+
+         <div class="card">
+             <div class="lineInput">
+                 <label>Nome</label>
+                 <input type="text"  id="nome" placeholder = "Nome do cliente">
+             </div>
+
+             <div class="lineInput">
+                <label>E-mail</label>
+                <input type="text"  id="email" placeholder = "Digite aqui o e-mail">
+            </div>
+
+
+             <div class="lineInput">
+                <label>CPF</label>
+                <input type="number"  id="cpf" placeholder="Digite aqui o CPF">
+            </div>
+
+            <div class="lineInput">
+                <label>Celular</label>
+                <input type="number"  id="celular" placeholder="Digite aqui o celular">
+            </div>
+           
+           
+          
+         <button onclick="produto.salvar()" id="btn1">Salvar</button>
+         <button onclick="produto.cancelar()">Cancelar</button>
+
+        </div>
+
+        <div class="content">
+            <table border="1">
+                <thead>
+                    <th class="center">ID</th>
+                    <th>Nome Cliente</th>
+                    <th>E-mail</th>
+                    <th>CPF</th>
+                    <th>Celular</th>
+                    <th class="center">Ações</th>
+                </thead>
+                <tbody id="tbody">
+                    
+                </tbody>
+            </table>
+
+        </div>
+
+    </main>
+
+   
+</body>
+</html>
