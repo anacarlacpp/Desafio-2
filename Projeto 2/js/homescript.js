@@ -80,7 +80,7 @@ class Produto {
             if(this.arrayProdutos[i].id == id){
                 this.arrayProdutos[i].nome = produto.nome;
                 this.arrayProdutos[i].email = produto.email;
-                this.arrayProdutos[i].cpf = produto.;
+                this.arrayProdutos[i].cpf = produto.cpf;
                 this.arrayProdutos[i].email = produto.email;
             }
         }
