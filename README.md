@@ -1,5 +1,10 @@
 # Projeto 2
  Desafio 2 - Hiring Coders 
+ 
+ <p align="center">
+   <img width="800" height="500" src = "Projeto 2\img\videosite.gif">
+ </p>
+ 
 
 --> HomePage 
 
